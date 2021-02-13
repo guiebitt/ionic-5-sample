@@ -1,19 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-
+import { IonicModule } from '@ionic/angular';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from '../app.module';
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { HomePage } from './home.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}

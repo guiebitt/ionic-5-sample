@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  constructor(private readonly translate: TranslateService) {}
 
-  constructor() {}
+  changePtLang() {
+    this.translate.use('pt-br');
+  }
 
+  changeEnLang() {
+    this.translate.use('en');
+  }
+
+  changeEsLang() {
+    this.translate.use('es');
+  }
 }

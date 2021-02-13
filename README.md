@@ -23,3 +23,11 @@ Besides
 - Run lint verification: `npm run lint`
 - Run the unit tests: `npm run test`
 - Run the end-to-end tests: `npm run e2e`
+
+# Features
+
+- [x] Internationalization (i18n);
+- [ ] Menu service;
+- [ ] Toolbar service;
+- [ ] Breadcrumb service;
+- [ ] Notification service;
