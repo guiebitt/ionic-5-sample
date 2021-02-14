@@ -1,23 +1,24 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
-
 import { AppComponent } from './app.component';
+import { I18nService } from './core/services/i18n.service';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let i18n: jasmine.SpyObj<I18nService>;
 
-  beforeEach(waitForAsync(() => {
-
-    TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    i18n = jasmine.createSpyObj<I18nService>(['initializeTranslate']);
+    component = new AppComponent(i18n);
   });
-  // TODO: add more tests!
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize translate when "ngOnInit"', () => {
+    // when
+    component.ngOnInit();
+
+    // then
+    expect(i18n.initializeTranslate).toHaveBeenCalledTimes(1);
+  });
 });

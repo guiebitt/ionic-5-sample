@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { I18nService } from '../core/services/i18n.service';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +7,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private readonly translate: TranslateService) {}
+  constructor(private readonly i18n: I18nService) {}
 
-  changePtLang() {
-    this.translate.use('pt-br');
+  changePtLang(): void {
+    this.i18n.useLanguage('pt-br');
   }
 
-  changeEnLang() {
-    this.translate.use('en');
+  changeEnLang(): void {
+    this.i18n.useLanguage('en');
   }
 
-  changeEsLang() {
-    this.translate.use('es');
+  changeEsLang(): void {
+    this.i18n.useLanguage('es');
   }
 }
